@@ -25,7 +25,8 @@ public class ControllerTest {
         Controller controller = new Controller(mockedIn, mockedOut, mock(Logger.class));
 
         controller.select(mockedFilter);
-        verify(mockedOut).postSelectedProducts(Arrays.asList(mockedProduct1));
+        verify(mockedOut).postSelectedProducts(Mockito.any()); // so ist called only once
+        verify(mockedOut).postSelectedProducts(Arrays.asList(mockedProduct1)); // and with the right arg
     }
 
     @Test
